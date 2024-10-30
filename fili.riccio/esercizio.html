@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Struttura Apprendimento ITIS_FERRARIS</title>
+</head>
+<body>
+    <div class="contenitore">
+        <h1 id="TITOLO">Struttura Apprendimento ITIS_FERRARIS</h1>
+
+        <!-- Dropdown per selezionare l'ambiente -->
+        <label for="selezionaAmbiente">Seleziona Ambiente:</label>
+        <select id="selezionaAmbiente" onchange="mostraAmbienteSelezionato()">
+            <option value="">Seleziona ambiente</option>
+        </select>
+
+        <!-- Dropdown per selezionare la classe -->
+        <label for="selezionaClasse">Seleziona Classe:</label>
+        <select id="selezionaClasse" onchange="mostraClasseSelezionata()">
+            <option value="">Seleziona classe</option>
+        </select>
+
+        <!-- Dati dell'ambiente selezionato -->
+        <div>
+            <h2>DATI AMBIENTE</h2>
+            <p id="Aula">Aula: </p>
+            <p id="Piano">Piano: </p>
+            <p id="Capienza">Capienza: </p>
+        </div>
+
+        <!-- Dati della classe selezionata -->
+        <div>
+            <h2>DATI CLASSE</h2>
+            <p id="Anno">Anno: </p>
+            <p id="Sezione">Sezione: </p>
+        </div>
+    </div>
+
+    <script>
+        // Caricamento del file JSON e popolazione dei menu a tendina
+        fetch('esercizio.json')
+            .then(response => response.json())
+            .then(data => {
+                const selectAmbiente = document.getElementById("selezionaAmbiente");
+                const selectClasse = document.getElementById("selezionaClasse");
+
+                // Popolazione del menu a tendina degli ambienti
+                data.ambienti.forEach(ambiente => {
+                    const option = document.createElement("option");
+                    option.value = JSON.stringify({
+                        aula: ambiente.aula,
+                        piano: ambiente.piano,
+                        capienza: ambiente.capienza,
+                        plesso: ambiente.plesso
+                    });
+                    option.text = `${ambiente.plesso} - ${ambiente.aula}`;
+                    selectAmbiente.add(option);
+                });
+
+                // Popolazione del menu a tendina delle classi
+                data.classi.forEach(classe => {
+                    const option = document.createElement("option");
+                    option.value = JSON.stringify({
+                        anno: classe.anno,
+                        sezione: classe.sezione
+                    });
+                    option.text = `Anno ${classe.anno} - Sezione ${classe.sezione}`;
+                    selectClasse.add(option);
+                });
+            })
+            .catch(error => console.error("Errore nel caricamento del JSON:", error));
+
+        // Funzione per mostrare i dati dell'ambiente selezionato
+        function mostraAmbienteSelezionato() {
+            const valoreSelezionato = document.getElementById("selezionaAmbiente").value;
+            if (valoreSelezionato) {
+                const ambiente = JSON.parse(valoreSelezionato);
+                mostraDatiAmbiente(ambiente.aula, ambiente.piano, ambiente.capienza);
+            }
+        }
+
+        // Funzione per mostrare i dati della classe selezionata
+        function mostraClasseSelezionata() {
+            const valoreSelezionato = document.getElementById("selezionaClasse").value;
+            if (valoreSelezionato) {
+                const classe = JSON.parse(valoreSelezionato);
+                mostraDatiClasse(classe.anno, classe.sezione);
+            }
+        }
+
+        // Funzione per visualizzare i dati dell'ambiente
+        function mostraDatiAmbiente(aula, piano, capienza) {
+            document.getElementById("Aula").innerText = `Aula: ${aula}`;
+            document.getElementById("Piano").innerText = `Piano: ${piano}`;
+            document.getElementById("Capienza").innerText = `Capienza: ${capienza !== "null" ? capienza : "Non specificata"}`;
+        }
+
+        // Funzione per visualizzare i dati della classe
+        function mostraDatiClasse(anno, sezione) {
+            document.getElementById("Anno").innerText = `Anno: ${anno}`;
+            document.getElementById("Sezione").innerText = `Sezione: ${sezione}`;
+        }
+    </script>
+</body>
+</html>

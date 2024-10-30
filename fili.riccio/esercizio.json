@@ -1,0 +1,70 @@
+{
+    "ambienti": [
+      {
+        "plesso": "succursale",
+        "aula": "inf37 lab",
+        "piano": "primo piano",
+        "capienza": "20"
+      },
+      {
+        "plesso": "succursale",
+        "aula": "aula professori",
+        "piano": "secondo piano",
+        "capienza": "null"
+      },
+      {
+        "plesso": "principale",
+        "aula": "scienze",
+        "piano": "terzo piano",
+        "capienza": "30"
+      },
+      {
+        "plesso": "centrale",
+        "aula": "laboratorio di elettronica",
+        "piano": "primo piano",
+        "capienza": "25"
+      },
+      {
+        "plesso": "principale",
+        "aula": "laboratorio di informatica",
+        "piano": "secondo piano",
+        "capienza": "20"
+      },
+      {
+        "plesso": "principale",
+        "aula": "biblioteca",
+        "piano": "primo piano",
+        "capienza": "40"
+      },
+      {
+        "plesso": "succursale",
+        "aula": "laboratorio di chimica",
+        "piano": "secondo piano",
+        "capienza": "15"
+      },
+      {
+        "plesso": "centrale",
+        "aula": "laboratorio di fisica",
+        "piano": "terzo piano",
+        "capienza": "25"
+      }
+    ],
+    "classi": [
+      { "anno": "1", "sezione": "A" },
+      { "anno": "1", "sezione": "B" },
+      { "anno": "1", "sezione": "C" },
+      { "anno": "2", "sezione": "A" },
+      { "anno": "2", "sezione": "B" },
+      { "anno": "2", "sezione": "C" },
+      { "anno": "3", "sezione": "A" },
+      { "anno": "3", "sezione": "B" },
+      { "anno": "3", "sezione": "C" },
+      { "anno": "4", "sezione": "A" },
+      { "anno": "4", "sezione": "B" },
+      { "anno": "4", "sezione": "C" },
+      { "anno": "5", "sezione": "A" },
+      { "anno": "5", "sezione": "B" },
+      { "anno": "5", "sezione": "C" }
+    ]
+  }
+  
